@@ -23,10 +23,18 @@ Route::get('/dashboard', [CategoryController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::get('/category/{id}', [CategoryController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('category.edit');
+
+Route::put('/category/{id}', [CategoryController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('category.update');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

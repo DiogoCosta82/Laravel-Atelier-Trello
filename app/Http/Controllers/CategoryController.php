@@ -15,9 +15,9 @@ class CategoryController extends Controller
     {
         $id = Auth::user()->id;
 
-        $categories = Category::join('category_user', 'categories.id','=','category_user.category_id')
-        ->where('category_user.user_id', '=',$id)->orderBy('column')->get();
-        
+        $categories = Category::join('category_user', 'categories.id', '=', 'category_user.category_id')
+            ->where('category_user.user_id', '=', $id)->orderBy('column')->get();
+
         return view('dashboard', compact('categories'));
     }
 
@@ -40,7 +40,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Category $id)
     {
         //
     }
@@ -48,23 +48,34 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(String $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, String $id)
     {
-        //
+
+        $request->validate([
+            'name' => 'required|max:80'
+        ]);
+
+        $category = Category::findOrFail($id);
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect(route('dashboard'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(String $id)
     {
         //
     }

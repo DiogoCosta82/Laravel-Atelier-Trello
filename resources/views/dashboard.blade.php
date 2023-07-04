@@ -16,22 +16,25 @@
                         <div class="rounded bg-grey-light  flex-no-shrink w-64 p-2 mr-3">
                             <div class="flex justify-between py-1">
                                 <h3 class="text-sm">{{$category->name}}</h3>
-                                <svg class="h-4 fill-current text-grey-dark cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z"/></svg>
+                                <a href="{{route('category.edit', $category->id)}}">
+                                    <svg class="h-4 fill-current text-grey-dark cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" />
+                                    </svg>
+                                </a>
                             </div>
                             <!-- liste des tâches -->
                             <div class="text-sm mt-2">
                                 <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
-                                Do a mobile first layout
+                                    Do a mobile first layout
                                 </div>
-                    
+
                                 <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
-                                Check the meta tags
+                                    Check the meta tags
                                 </div>
-                    
                                 <p class="mt-3 text-grey-dark">Add a card...</p>
                             </div>
                         </div>
-                      @endforeach
+                        @endforeach
                     </div>
                 </div>
             </div>
