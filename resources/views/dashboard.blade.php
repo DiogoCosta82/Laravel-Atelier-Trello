@@ -24,13 +24,13 @@
                             </div>
                             <!-- liste des tâches -->
                             <div class="text-sm mt-2">
+                                @foreach ($tasks as $task)
+                                @if($task->category_id==$category->id)
                                 <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
-                                    Do a mobile first layout
+                                    {{$task->name}}
                                 </div>
-
-                                <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
-                                    Check the meta tags
-                                </div>
+                                @endif
+                                @endforeach
                                 <p class="mt-3 text-grey-dark">Add a card...</p>
                             </div>
                         </div>

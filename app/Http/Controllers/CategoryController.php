@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,14 @@ class CategoryController extends Controller
         $categories = Category::join('category_user', 'categories.id', '=', 'category_user.category_id')
             ->where('category_user.user_id', '=', $id)->orderBy('column')->get();
 
-        return view('dashboard', compact('categories'));
+        //$tasks = Task::all();
+
+        foreach ($categories as $category) {
+            $list[] = $category->id;
+        }
+        $tasks = Task::whereIn('category_id', $list)->get();
+
+        return view('dashboard', compact('categories', 'tasks'));
     }
 
     /**
