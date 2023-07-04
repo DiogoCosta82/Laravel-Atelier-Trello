@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
 
         User::factory()->create([
-            'name' => 'diogo',
-            'email' => 'diocatus@gmail.com',
+            'name' => 'test_trello',
+            'email' => 'test@test.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$EAFLTu.j8Eh7xmRu4pgbh.I4U/8s/gfe2c5ItTCphkqj3ZtW5NrSu', // password test2023
         ]);
